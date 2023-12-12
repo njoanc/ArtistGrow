@@ -69,4 +69,39 @@ class UserServiceTests {
 
     await expect(result).to.be.rejectedWith("User already exists");
   }
+
+  @test
+  async "should login"() {
+    const userDto = {
+      name: faker.person.fullName(),
+      email: faker.internet.email(),
+      password: await bcrypt.hash("K12345", 10),
+    };
+
+    const user = { email: userDto.email, password: "K12345" };
+
+    await UserFactoryInstance.create(userDto);
+
+    const result: any = await this.userService.login(user as any);
+
+    expect(result.user.email).to.equal(userDto.email);
+    expect(result.user.name).to.equal(userDto.name);
+    expect(result.token).to.be.a("string").with.length.greaterThan(10);
+  }
+
+  @test
+  async "should reject with an error if passwords don't match"() {
+    const userDto = {
+      name: faker.person.fullName(),
+      email: faker.internet.email(),
+      password: await bcrypt.hash("K12345", 10),
+    };
+
+    const user = { email: userDto.email, password: "K1234895" };
+
+    await UserFactoryInstance.create(userDto);
+
+    const result: any = this.userService.login(user as any);
+    await expect(result).to.be.rejectedWith("User details does not match");
+  }
 }
