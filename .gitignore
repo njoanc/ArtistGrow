@@ -1,6 +1,7 @@
 # Nodejs
 node_modules/
 npm-debug.log
+.env
 
 # IDE
 /.settings/
@@ -18,6 +19,7 @@ docker-compose.*.yml
 
 # Skaffold
 .skaffold*
+
 
 #language cache folder
 languages/preprocessed
