@@ -1,26 +1,14 @@
-const swaggerOptions = {
-  swaggerDefinition: {
-    openapi: "3.0.0",
-    info: {
-      title: "ArtistGrow API Documentation",
-      version: "1.0.0",
-      description: "API documentation for ArtistGrow application",
-      license: {
-        name: "Licensed Under MIT",
-        url: "https://spdx.org/licenses/MIT.html",
-      },
-      contact: {
-        name: "Jeanne d'Arc NYIRAMWIZA",
-      },
-    },
-    servers: [
-      {
-        url: "http://localhost:3000",
-        description: "Development server",
-      },
-    ],
-  },
-  apis: ["./src/controllers/*.ts"],
-};
+import { Express, Request, Response } from "express";
+import swaggerUi from "swagger-ui-express";
+import * as swaggerDocument from "./docs.json";
 
-export default swaggerOptions;
+export const swaggerOptions = (app: Express) => {
+  // Swagger page
+  app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+  // Docs in JSON format
+  app.get("/docs.json", (req: Request, res: Response) => {
+    res.writeHead(200, { "Content-Type": "text/html" }),
+      res.send(swaggerDocument);
+  });
+};
