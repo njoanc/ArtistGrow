@@ -7,6 +7,7 @@ export const config = {
     port: parseInt(process.env.SERVER_PORT || "3000", 10),
   },
   dev: {
+    name: "default",
     host: "localhost",
     type: "mysql",
     synchronize: "false",
