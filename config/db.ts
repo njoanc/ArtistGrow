@@ -40,4 +40,9 @@ export const config = {
     },
   },
   jwtSecretKey: process.env.JWT_SECRET_KEY || "defaultSecretKey",
+
+  google: {
+    googleClientId: process.env.GOOGLE_CLIENT_ID,
+    googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  },
 };

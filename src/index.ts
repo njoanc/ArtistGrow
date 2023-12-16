@@ -7,16 +7,16 @@ import Container from "typedi";
 import { config } from "../config/db";
 import { Logger } from "../src/logger/logger";
 import { swaggerOptions } from "../swagger/swagger";
-import "./controllers/users.controller";
-
+import "./controllers/users/users.controller";
+import { initializeDatabase } from "./db/connection";
 import { router } from "./decorators/controller.decorators";
 import "./extensions/request.extension";
 import { UsersMiddleware } from "./middlewares/auth.middleware";
-import { initializeDatabase } from "./db/connection";
 
 initializeDatabase();
 
 const app = Express();
+
 const server: http.Server = http.createServer(app);
 
 const PORT = config.server.port;
