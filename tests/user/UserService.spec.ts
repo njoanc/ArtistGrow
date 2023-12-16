@@ -10,7 +10,7 @@ import Container from "typedi";
 import { v4 as uuidv4 } from "uuid";
 import { EmailTemplatesConstants } from "../../src/constants/email-templates";
 import { UsersRepository } from "../../src/respositories/users.repository";
-import { UsersService } from "../../src/services/users.service";
+import { UsersService } from "../../src/services/users/users.service";
 import { EmailUtils } from "../../src/utils/email.utils";
 import { EmailFactoryInstance } from "./factories/email-template-factory";
 import { UserFactoryInstance } from "./factories/user-factory";

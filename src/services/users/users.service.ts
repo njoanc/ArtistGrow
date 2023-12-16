@@ -1,12 +1,12 @@
 import { Service } from "typedi";
-import { EmailTemplatesConstants } from "../constants/email-templates";
-import { HTTP_CODES } from "../constants/http-codes";
-import { UsersDTO } from "../dto/users.dto";
-import { CustomError } from "../error/custom.error";
-import { UsersRepository } from "../respositories/users.repository";
-import { EmailUtils } from "../utils/email.utils";
-import { JWTUtils } from "../utils/jwt-utils";
-import { PasswordUtils } from "../utils/password.utils";
+import { EmailTemplatesConstants } from "../../constants/email-templates";
+import { HTTP_CODES } from "../../constants/http-codes";
+import { UsersDTO } from "../../dto/users.dto";
+import { CustomError } from "../../error/custom.error";
+import { UsersRepository } from "../../respositories/users.repository";
+import { EmailUtils } from "../../utils/email.utils";
+import { JWTUtils } from "../../utils/jwt-utils";
+import { PasswordUtils } from "../../utils/password.utils";
 
 @Service()
 export class UsersService {

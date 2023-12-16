@@ -1,12 +1,11 @@
 import { Request, Response } from "express";
 import { Service } from "typedi";
-import { HTTP_CODES } from "../constants/http-codes";
-import { Controller } from "../decorators/controller.decorators";
-import { Get, Post } from "../decorators/router.decorator";
-import { UsersDTO } from "../dto/users.dto";
-import { UsersService } from "../services/users.service";
+import { HTTP_CODES } from "../../constants/http-codes";
+import { Controller } from "../../decorators/controller.decorators";
+import { Get, Post } from "../../decorators/router.decorator";
+import { UsersDTO } from "../../dto/users.dto";
+import { UsersService } from "../../services/users/users.service";
 
-// Sequence altered as decorators work on IoC - Inversion of Control
 @Controller("/api/user")
 @Service()
 export default class UsersController {
